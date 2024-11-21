@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="API.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+
+    <ScrollView>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300" />
+                <ColumnDefinition Width="3*" />
+            </Grid.ColumnDefinitions>
+
+            <VerticalStackLayout BackgroundColor="#141414">
+
+                <VerticalStackLayout
+                    Grid.Column="0"
+                    Margin="20"
+                    Spacing="10">
+                    <Label FontSize="20" Text="Rok udělení Nobelovy ceny" />
+                    <Entry x:Name="YearEntry" Placeholder="Rok" />
+                    <Label FontSize="20" Text="Kategorie: " />
+                    <Picker x:Name="CategoryPicker" />
+                    <Button
+                        x:Name="SubmitButton"
+                        Clicked="SubmitButton_OnClicked"
+                        Text="Submit"
+                        WidthRequest="105" />
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout Grid.Column="1">
+
+                <VerticalStackLayout>
+
+                    <ListView
+                        x:Name="ResultListView"
+                        Margin="0,50,0,0"
+                        BackgroundColor="#141414"
+                        ItemSelected="ResultListView_OnItemSelected"
+                        WidthRequest="500">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Margin="10" HeightRequest="20">
+                                        <Label HorizontalOptions="Start" Text="{Binding Path=Name}" />
+                                        <Label HorizontalOptions="End" Text="{Binding Path=Category}" />
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <VerticalStackLayout
+                        x:Name="InfoLayout"
+                        Margin="0,100,0,0"
+                        HorizontalOptions="Center"
+                        VerticalOptions="End"
+                        WidthRequest="800" />
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
